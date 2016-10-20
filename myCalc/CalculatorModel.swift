@@ -47,6 +47,7 @@ class CalculatorModel {
         "e": Operation.Constant(M_E),
         "√": Operation.UnaryOperation(sqrt),
         "cos": Operation.UnaryOperation(cos),
+        "sin": Operation.UnaryOperation(sin),
         "+": Operation.BinaryOperation( {$0 + $1} ),
         "-": Operation.BinaryOperation( {$0 - $1} ),
         "÷": Operation.BinaryOperation( {$0 / $1} ),

@@ -109,7 +109,8 @@ class ViewController: UIViewController {
         userInMiddleOfTyping = false
         calculatorCore.clear()
         displayValue = calculatorCore.result
-        /**/desc.text = calculatorCore.description
+        // /**/desc.text = calculatorCore.description
+        desc.text = " "
     }
     @IBAction private func touchDecimalButton(sender: UIButton) {
         if userInMiddleOfTyping {
