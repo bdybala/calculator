@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalculatorViewController: UIViewController {
     
     @IBOutlet private weak var display: UILabel!
     @IBOutlet private weak var desc: UILabel!
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
     @IBAction func touchVariable(sender: UIButton) {
         let variable = sender.currentTitle!
         if variable.hasSuffix("+") {
-            // add variable
+            // change variable
             let value = displayValue
             calculatorCore.variableValues.updateValue(value, forKey: variable.substringToIndex(variable.endIndex.predecessor()))
             userInMiddleOfTyping = false

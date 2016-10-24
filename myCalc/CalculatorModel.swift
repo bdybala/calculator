@@ -10,6 +10,7 @@ import Foundation
 
 class CalculatorModel {
     
+    let NUMBERS = ["0","1","2","3","4","5","6","7","8","9",".","-","e","π","v","x"]
     private var accumulator = 0.0
     private var internalProgram = [AnyObject]()
     var description = ""
@@ -23,8 +24,12 @@ class CalculatorModel {
     func setOperand(operand: String) {
         internalProgram.append(operand)
         accumulator = variableValues[operand] ?? 0.0
-        /**/ description += "\(operand)"
-
+        // if user has done typing sentence (i.e. 2+3=) than it doesn't append variable to the description
+        if description != "" && NUMBERS.contains(description.substringFromIndex(description.endIndex.predecessor())) {
+            description = "\(operand)"
+        } else {
+            description += "\(operand)"
+        }
     }
     
     var result: Double {
@@ -77,7 +82,7 @@ class CalculatorModel {
                 accumulator = value
                 if description != "" {
                     /**/ var lastChar = description.substringFromIndex(description.endIndex.predecessor())
-                    /**/ while ["0","1","2","3","4","5","6","7","8","9",".","-","e","π"].contains(lastChar) {
+                    /**/ while NUMBERS.contains(lastChar) {
                         description = description.substringToIndex(description.endIndex.predecessor())
                         if description.startIndex.distanceTo(description.endIndex) > 1 {
                             lastChar = description.substringFromIndex(description.endIndex.predecessor())
